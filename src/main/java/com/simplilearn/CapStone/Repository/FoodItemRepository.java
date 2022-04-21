@@ -11,6 +11,7 @@ public interface FoodItemRepository extends CrudRepository<FoodItem, Integer> {
 
 
     FoodItem save(FoodItem fi);
+    List<FoodItem> findAll();
 
 
 }

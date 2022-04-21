@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class AdminFoodList {
 
@@ -14,8 +16,8 @@ public class AdminFoodList {
     com.simplilearn.CapStone.Service.AdminFood af;
 
     @CrossOrigin
-    @RequestMapping(value = "/userRegister", method = RequestMethod.POST, consumes = "application/json")
-    ResponseEntity<String> userRegister(@RequestBody FoodItem fi) {
+    @RequestMapping(value = "/addFoodItem", method = RequestMethod.POST, consumes = "application/json")
+    ResponseEntity<String> addFoodItem(@RequestBody FoodItem fi) {
 
         boolean added = af.addFoodItem(fi);
 
@@ -24,5 +26,14 @@ public class AdminFoodList {
         }else{
             return new ResponseEntity<>("An Error occured", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/getFoodItem", method = RequestMethod.GET)
+    List<FoodItem> getFoodItem() {
+
+        List<FoodItem> foodItemList = af.getFoodItem();
+
+        return foodItemList;
     }
 }
