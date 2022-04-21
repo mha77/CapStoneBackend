@@ -14,7 +14,6 @@ public class AdminFood {
     @Autowired
     FoodItemRepository fir;
     public boolean addFoodItem(FoodItem fi){
-
         fir.save(fi);
         return true;
     }
@@ -26,4 +25,9 @@ public class AdminFood {
         return foodItemList;
 
     }
+    public boolean updateFoodItem(FoodItem fi){
+        fir.save(fi);
+        return true;
+    }
+
 }

@@ -36,4 +36,17 @@ public class AdminFoodList {
 
         return foodItemList;
     }
+
+    @CrossOrigin
+    @RequestMapping(value = "/updateFoodItem", method = RequestMethod.POST, consumes = "application/json")
+    ResponseEntity<String> updateFoodItem(@RequestBody FoodItem fi) {
+
+        boolean updated = af.updateFoodItem(fi);
+
+        if(updated){
+            return new ResponseEntity<>("FoodItem updated", HttpStatus.CREATED);
+        }else{
+            return new ResponseEntity<>("An Error occured", HttpStatus.BAD_REQUEST);
+        }
+    }
 }
